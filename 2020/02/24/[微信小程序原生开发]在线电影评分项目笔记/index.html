@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>[微信小程序原生开发]在线电影评分项目笔记 | 临渊羡鱼的个人技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[微信小程序原生开发]云谷电影项目笔记0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[微信小程序原生开发]在线电影评分项目笔记">
+<meta property="og:url" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="临渊羡鱼的个人技术博客">
+<meta property="og:description" content="[微信小程序原生开发]云谷电影项目笔记0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/directory.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/moban.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/toMore.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/more.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/morejs.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/loadmorewxml.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/loadmorewxss.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/upload.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/adddev01.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/adddev02.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/test.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/custom.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/yg01.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/yg02.png">
+<meta property="article:published_time" content="2020-02-23T16:58:37.320Z">
+<meta property="article:modified_time" content="2020-02-23T17:09:54.758Z">
+<meta property="article:author" content="侯仕平">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/directory.png">
+  
+    <link rel="alternate" href="/atom.xml" title="临渊羡鱼的个人技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">临渊羡鱼的个人技术博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">仅供交流和学习用，勿商用！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://harrison258.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-[微信小程序原生开发]在线电影评分项目笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-02-23T16:58:37.320Z" itemprop="datePublished">2020-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [微信小程序原生开发]在线电影评分项目笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="微信小程序原生开发-云谷电影项目笔记"><a href="#微信小程序原生开发-云谷电影项目笔记" class="headerlink" title="[微信小程序原生开发]云谷电影项目笔记"></a><center>[微信小程序原生开发]云谷电影项目笔记</center></h2><h4 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h4><p>工作必备技能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）</span><br><span class="line">2）微信小程序</span><br></pre></td></tr></table></figure>
+
+<p>面试必须掌握的核心内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTML5新特性和CSS3新特性</span><br><span class="line">浏览器兼容处理</span><br><span class="line">ES5.1&#x2F;ES6</span><br><span class="line">AMD CMD CommonJS</span><br><span class="line">Node.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)</span><br><span class="line">Vue.js</span><br><span class="line">微信小程序</span><br><span class="line">线上项目</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-微信小程序"><a href="#1-微信小程序" class="headerlink" title="1.微信小程序"></a>1.微信小程序</h4><h5 id="1-1-小程序特点"><a href="#1-1-小程序特点" class="headerlink" title="1.1 小程序特点"></a>1.1 小程序特点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）用完即走，不需要下载。</span><br><span class="line">2）它的使用环境为微信。微信小程序不能在浏览器中打开，它有自己的开发环境和测试环境。</span><br></pre></td></tr></table></figure>
+
+<p>下载开发微信小程序的IDE。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;miniprogram&#x2F;dev&#x2F;devtools&#x2F;devtools.html</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2-注册微信小程序帐号"><a href="#1-2-注册微信小程序帐号" class="headerlink" title="1.2 注册微信小程序帐号"></a>1.2 注册微信小程序帐号</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果没有小程序帐号，可以使用测试号，但测试号不能上线。</span><br></pre></td></tr></table></figure>
+
+<p>注册网址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">微信小程序和公众号不能使用同一个帐号（即需要两个或多个邮箱，不一定是QQ邮箱），登录小程序时，公众号会自动下线。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-创建项目"><a href="#3-创建项目" class="headerlink" title="3.创建项目"></a>3.创建项目</h4><h4 id="4-基础知识"><a href="#4-基础知识" class="headerlink" title="4.基础知识"></a>4.基础知识</h4><h5 id="4-1-小程序与普通网页开发的区别"><a href="#4-1-小程序与普通网页开发的区别" class="headerlink" title="4.1 小程序与普通网页开发的区别"></a>4.1 小程序与普通网页开发的区别</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​小程序的主要开发语言是 JavaScript ，小程序的开发同普通的网页开发相比有很大的相似性。对于前端开发者而言，从网页开发迁移到小程序的开发成本并不高，但是二者还是有些许区别的。</span><br><span class="line"></span><br><span class="line">​网页开发渲染线程和脚本线程是互斥的，这也是为什么长时间的脚本运行可能会导致页面失去响应，而在小程序中，二者是分开的，分别运行在不同的线程中。网页开发者可以使用到各种浏览器暴露出来的 DOM API，进行 DOM 选中和操作。小程序的逻辑层和渲染层是分开的，逻辑层运行在 JSCore 中，并没有一个完整浏览器对象，因而缺少相关的DOM API和BOM API。这一区别导致了前端开发非常熟悉的一些库，例如 jQuery、 Zepto 等，在小程序中是无法运行的。同时 JSCore 的环境同 NodeJS 环境也是不尽相同，所以一些 NPM 的包在小程序中也是无法运行的。小程序中没有DOM操作。</span><br><span class="line"></span><br><span class="line">​网页开发者需要面对的环境是各式各样的浏览器，PC 端需要面对 IE、Chrome、QQ浏览器等，在移动端需要面对Safari、Chrome以及 iOS、Android 系统中的各式 WebView 。而小程序开发过程中需要面对的是两大操作系统 iOS 和 Android 的微信客户端，以及用于辅助开发的小程序开发者工具，小程序中三大运行环境也是有所区别的，如表1-1所示。</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-2-尺寸单位"><a href="#4-2-尺寸单位" class="headerlink" title="4.2 尺寸单位"></a>4.2 尺寸单位</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx &#x3D; 375px &#x3D; 750物理像素，1rpx &#x3D; 0.5px &#x3D; 1物理像素。</span><br><span class="line">设备	rpx换算px (屏幕宽度&#x2F;750)	px换算rpx (750&#x2F;屏幕宽度)</span><br><span class="line">iPhone5	1rpx &#x3D; 0.42px	1px &#x3D; 2.34rpx</span><br><span class="line">iPhone6	1rpx &#x3D; 0.5px	1px &#x3D; 2rpx</span><br><span class="line">iPhone6 Plus	1rpx &#x3D; 0.552px	1px &#x3D; 1.81rpx</span><br><span class="line">建议： 开发微信小程序时设计师可以用 iPhone6 作为视觉稿的标准。</span><br><span class="line">注意： 在较小的屏幕上不可避免的会有一些毛刺，请在开发时尽量避免这种情况。</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-3-样式导入"><a href="#4-3-样式导入" class="headerlink" title="4.3 样式导入"></a>4.3 样式导入</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &#39;[路径].wxss&#39;;   &#x2F;*必须以分号结束，不能使用link导入*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-4-可以使用的标签"><a href="#4-4-可以使用的标签" class="headerlink" title="4.4 可以使用的标签"></a>4.4 可以使用的标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scroll-view swiper view(相当于div) icon progress rich-text(富文本) button checkbox editor form input label picker radio slider switch textarea navigator(相当于a) audio video image(相当于img) camera map canvas navigation-bar text(相当于p) block</span><br></pre></td></tr></table></figure>
+
+<p>注意：单标签必须闭合，否则会报错！！！没有link、style、script等标签不能使用！</p>
+<h5 id="4-5-小程序代码构成"><a href="#4-5-小程序代码构成" class="headerlink" title="4.5 小程序代码构成"></a>4.5 小程序代码构成</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.js:逻辑处理</span><br><span class="line">.json:静态数据，属于配置文件</span><br><span class="line">.wxml:页面结构，相当html文件</span><br><span class="line">.wxss:页面布局，相当于css</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-6-数据类型"><a href="#4-6-数据类型" class="headerlink" title="4.6 数据类型"></a>4.6 数据类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">WXS 语言目前共有以下几种数据类型：</span><br><span class="line">&#96;number&#96; ： 数值</span><br><span class="line">&#96;string&#96; ：字符串</span><br><span class="line">&#96;boolean&#96;：布尔值</span><br><span class="line">&#96;object&#96;：对象</span><br><span class="line">&#96;function&#96;：函数</span><br><span class="line">&#96;array&#96; : 数组</span><br><span class="line">&#96;date&#96;：日期</span><br><span class="line">&#96;regexp&#96;：正则</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-项目文件夹说明"><a href="#5-项目文件夹说明" class="headerlink" title="5.项目文件夹说明　　"></a>5.项目文件夹说明　　</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pages:存放项目页面文件,一般一个目录对应一个页面。</span><br><span class="line">utils:存放工具函数（一般是自己封装）</span><br><span class="line">全局配置文件：	</span><br><span class="line">    app.js:全局的逻辑处理</span><br><span class="line">    app.json:(1)页面文件路径设置(2)窗口外观设置(3)设置&#x2F;添加tabbar(底部&#x2F;顶部导航)(4)小程序内搜索，开发者可以通过 &#96;sitemap.json&#96; 配置，或者管理后台页面收录开关来配置其小程序页面是否允许微信索引微信索引</span><br><span class="line">    app.wxss:全局样式</span><br><span class="line">    project.config.json:项目配置文件</span><br><span class="line">    sitemap.json:小程序内搜索，开发者可以通过 &#96;sitemap.json&#96; 配置，或者管理后台页面收录开关来配置其小程序页面是否允许微信索引</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-全局窗口设置"><a href="#6-全局窗口设置" class="headerlink" title="6.全局窗口设置"></a>6.全局窗口设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;window&quot;: &#123;</span><br><span class="line">    &quot;backgroundTextStyle&quot;: &quot;light&quot;,  下拉刷新的颜色</span><br><span class="line">    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,标题栏背景色</span><br><span class="line">    &quot;navigationBarTitleText&quot;: &quot;WeChat&quot;,标题栏标题</span><br><span class="line">    &quot;navigationBarTextStyle&quot;: &quot;black&quot; 标题栏文字颜色</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-导航栏如果放在顶部，是不必加图的，如果加图，图不会显示出来。"><a href="#7-导航栏如果放在顶部，是不必加图的，如果加图，图不会显示出来。" class="headerlink" title="7.导航栏如果放在顶部，是不必加图的，如果加图，图不会显示出来。"></a>7.导航栏如果放在顶部，是不必加图的，如果加图，图不会显示出来。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">    &quot;position&quot;:&quot;bottom&quot;,</span><br><span class="line">    &quot;list&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;pagePath&quot;: &quot;pages&#x2F;home&#x2F;home&quot;,</span><br><span class="line">        &quot;text&quot;: &quot;首页&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;pagePath&quot;: &quot;pages&#x2F;list&#x2F;list&quot;,</span><br><span class="line">        &quot;text&quot;: &quot;榜单&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;pagePath&quot;: &quot;pages&#x2F;mine&#x2F;mine&quot;,</span><br><span class="line">        &quot;text&quot;: &quot;我的&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-上线说明"><a href="#8-上线说明" class="headerlink" title="8.上线说明"></a>8.上线说明</h4><p>　　&gt;   不能超过2MB，所以图片文件和数据及后台代码最好挂到服务器上（使用CDN）。</p>
+<p>　　&gt;   如果微信小程序要上线，必须要将要请求的接口的网址写到到后台的开发-&gt;开发设置-&gt;服务器域名-&gt;request合法域名。（注意：只支持https协议）</p>
+<h4 id="9-复制快捷键"><a href="#9-复制快捷键" class="headerlink" title="9.复制快捷键"></a>9.复制快捷键</h4><p>　　向下：Alt+Shift+向下光标键</p>
+<p>　　向上：Alt+Shift+向上光标键</p>
+<h4 id="10-豆瓣API"><a href="#10-豆瓣API" class="headerlink" title="10.豆瓣API:"></a>10.豆瓣API:</h4><p>​    域名：<a href="http://t.yushu.im" target="_blank" rel="noopener">http://t.yushu.im</a></p>
+<pre><code>最近上映：/v2/movie/coming_soon
+热门电影：/v2/movie/in_theaters
+Top250电影：/v2/movie/top250
+电影详情：/v2/movie/subject
+电影搜索：/v2/movie/search
+
+参数：?start=0&amp;count=20</code></pre><h4 id="11-图标使用"><a href="#11-图标使用" class="headerlink" title="11.图标使用"></a>11.图标使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;icon type&#x3D;&quot;success&quot; size&#x3D;&quot;20&quot;&#x2F;&gt;</span><br><span class="line">&lt;icon type&#x3D;&quot;search&quot; size&#x3D;&quot;10&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">type:</span><br><span class="line">	success, success_no_circle, info, warn, waiting, cancel, download, search, clear</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-创建目录结构"><a href="#12-创建目录结构" class="headerlink" title="12.创建目录结构"></a>12.创建目录结构</h4><p><img src="directory.png" alt=""></p>
+<h4 id="13-轮播使用"><a href="#13-轮播使用" class="headerlink" title="13.轮播使用"></a>13.轮播使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper </span><br><span class="line">  indicator-dots&#x3D;&quot;true&quot; </span><br><span class="line">  autoplay&#x3D;&quot;true&quot;</span><br><span class="line">  interval&#x3D;&quot;3000&quot;</span><br><span class="line">  duration&#x3D;&quot;1000&quot;</span><br><span class="line">  indicator-color&#x3D;&quot;rgba(255,255,255,.7)&quot;</span><br><span class="line">  indicator-active-color&#x3D;&quot;blue&quot;&gt;</span><br><span class="line">  &lt;block wx:for&#x3D;&quot;&#123;&#123;imgUrls&#125;&#125;&quot; wx:for-item&#x3D;&quot;list&quot; wx:for-index&#x3D;&quot;idx&quot;&gt;</span><br><span class="line">    &lt;swiper-item&gt;</span><br><span class="line">      &lt;image src&#x3D;&quot;&#123;&#123;list&#125;&#125;&quot; class&#x3D;&quot;slide-image&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;swiper-item&gt;</span><br><span class="line">  &lt;&#x2F;block&gt;</span><br><span class="line">&lt;&#x2F;swiper&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　备注：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">indicator-dots&#x3D;&quot;true&quot; -&gt; 添加计数器</span><br><span class="line">autoplay&#x3D;&quot;true&quot;  -&gt; 是否为自动轮播</span><br><span class="line">interval&#x3D;&quot;3000&quot;  -&gt; 轮播切换时间</span><br><span class="line">duration&#x3D;&quot;1000&quot;  -&gt; 每张图切换时间</span><br><span class="line">indicator-color&#x3D;&quot;rgba(255,255,255,.7)&quot;  -&gt; 计数器颜色</span><br><span class="line">indicator-active-color&#x3D;&quot;blue&quot;  -&gt; 当前计数器颜色</span><br></pre></td></tr></table></figure>
+
+<h4 id="14-首页-首页布局"><a href="#14-首页-首页布局" class="headerlink" title="14.[首页]首页布局"></a>14.[首页]首页布局</h4><p>　　home.wxml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;search&quot;&gt;</span><br><span class="line">		&lt;icon type&#x3D;&quot;search&quot; size&#x3D;&#39;10&#39;&gt;&lt;&#x2F;icon&gt; 搜索</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line">&lt;!-- 轮播图 --&gt;</span><br><span class="line">&lt;swiper</span><br><span class="line">  indicator-dots&#x3D;&quot;false&quot;</span><br><span class="line">  autoplay&#x3D;&quot;true&quot;</span><br><span class="line">  interval&#x3D;&quot;3000&quot;</span><br><span class="line">  duration&#x3D;&quot;1000&quot;</span><br><span class="line">  indicator-color&#x3D;&quot;rgba(255,255,255,.7)&quot;</span><br><span class="line">  indicator-active-color&#x3D;&quot;red&quot;</span><br><span class="line">  circular&#x3D;&quot;true&quot;</span><br><span class="line">  easing-function&#x3D;&quot;linear&quot;&gt;</span><br><span class="line">  &lt;block wx:for&#x3D;&quot;&#123;&#123;swiperList&#125;&#125;&quot; wx:key&#x3D;&quot;&#123;&#123; item.id &#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;swiper-item&gt;</span><br><span class="line">      &lt;image src&#x3D;&quot;&#123;&#123; item.imgUrl &#125;&#125;&quot; class&#x3D;&quot;slide-image&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;swiper-item&gt;</span><br><span class="line">  &lt;&#x2F;block&gt;</span><br><span class="line">&lt;&#x2F;swiper&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;wrapper&quot;&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;movies&quot; wx:for&#x3D;&quot;&#123;&#123; movies &#125;&#125;&quot; wx:key&#x3D;&quot;&#123;&#123; index &#125;&#125;&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;movies-title&quot;&gt;</span><br><span class="line">			&lt;view&gt;&#123;&#123; item.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">			&lt;view class&#x3D;&quot;more&quot; bindtap&#x3D;&quot;toMore&quot; data-title&#x3D;&quot;&#123;&#123; item.title &#125;&#125;&quot;&gt;</span><br><span class="line">				更多&lt;text class&#x3D;&quot;iconfont iconxiangyoujiantou&quot;&gt;&lt;&#x2F;text&gt;</span><br><span class="line">			&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;movies-list&quot;&gt;</span><br><span class="line">			&lt;scroll-view scroll-x&gt;</span><br><span class="line">				&lt;view class&#x3D;&quot;movies-item&quot;</span><br><span class="line">					  bindtap&#x3D;&quot;toDetails&quot;</span><br><span class="line">					  data-id&#x3D;&quot;&#123;&#123; list.id &#125;&#125;&quot;</span><br><span class="line">					  wx:for&#x3D;&quot;&#123;&#123; item.list &#125;&#125;&quot;</span><br><span class="line">					  wx:for-item&#x3D;&quot;list&quot;</span><br><span class="line">					  wx:for-index&#x3D;&quot;idx&quot;</span><br><span class="line">					  wx:key&#x3D;&quot;&#123;&#123; idx &#125;&#125;&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;image src&#x3D;&quot;&#123;&#123; list.images.large &#125;&#125;&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">					&lt;view class&#x3D;&quot;movie-name&quot;&gt;&#123;&#123; list.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">					&lt;view class&#x3D;&quot;rating&quot;&gt;</span><br><span class="line">						&lt;image src&#x3D;&quot;&#x2F;images&#x2F;star1.png&quot;&#x2F;&gt;</span><br><span class="line">                		&lt;image src&#x3D;&quot;&#x2F;images&#x2F;star2.png&quot;&#x2F;&gt;</span><br><span class="line">                		&lt;image src&#x3D;&quot;&#x2F;images&#x2F;star3.png&quot;&#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;view&gt;</span><br><span class="line">				&lt;&#x2F;view&gt;</span><br><span class="line">			&lt;&#x2F;scroll-view&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　home.wxss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">@import &#39;..&#x2F;..&#x2F;iconfont.wxss&#39;;</span><br><span class="line">.header&#123;</span><br><span class="line">	background:#42bd56;</span><br><span class="line">	padding:20rpx 30rpx;</span><br><span class="line">&#125;</span><br><span class="line">.search&#123;</span><br><span class="line">	background:#ffffff;</span><br><span class="line">	text-align:center;</span><br><span class="line">	border-radius:10rpx;</span><br><span class="line">	font-size:28rpx;</span><br><span class="line">	color:#ccc;</span><br><span class="line">	padding:10rpx 0;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 轮播图 *&#x2F;</span><br><span class="line">.slide-image &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 250rpx;</span><br><span class="line">&#125;</span><br><span class="line">swiper &#123;</span><br><span class="line">  height: 110px;</span><br><span class="line">&#125;</span><br><span class="line">.movies-title&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	justify-content:space-between;</span><br><span class="line">	padding: 20rpx 30rpx;</span><br><span class="line">	font-size: 28rpx;</span><br><span class="line">&#125;</span><br><span class="line">.movies-title&gt;view&#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.movies-list&#123;</span><br><span class="line">	padding: 20rpx;</span><br><span class="line">	white-space: nowrap;</span><br><span class="line">&#125;</span><br><span class="line">.movies-item&#123;</span><br><span class="line">  	width: 200rpx;</span><br><span class="line">	display: inline-block;</span><br><span class="line">	margin-right: 15rpx;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">.more&#123;</span><br><span class="line">	color:#42bd56;</span><br><span class="line">&#125;</span><br><span class="line">.more&gt;text&#123;</span><br><span class="line">	font-weight: bold;</span><br><span class="line">	font-size: 32rpx;</span><br><span class="line">&#125;</span><br><span class="line">.movies-item&gt;image&#123;</span><br><span class="line">	width: 200rpx;</span><br><span class="line">	height: 284rpx;</span><br><span class="line">  border-radius: 10rpx;</span><br><span class="line">&#125;</span><br><span class="line">.movie-name&#123;</span><br><span class="line">  font-size: 28rpx;</span><br><span class="line">  white-space: nowrap;</span><br><span class="line">  text-overflow:ellipsis;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.rating&#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="17-utils-请求的工具函数的封装"><a href="#17-utils-请求的工具函数的封装" class="headerlink" title="17.[utils]请求的工具函数的封装"></a>17.[utils]请求的工具函数的封装</h4><p>　　第一步：在utils下创建js文件，书写要封装的函数，最后要抛出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function request(url,callback)&#123;</span><br><span class="line">  wx.request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    success:function(res)&#123;</span><br><span class="line">      callback(res.data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  request</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　第二步：使用工具函数</p>
+<p>　　1）引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let http &#x3D; require(&#39;..&#x2F;..&#x2F;utils&#x2F;http.js&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>　　2）使用工具函数发请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onLoad: function (options) &#123;</span><br><span class="line">    let str &#x3D; app.globalData.movies;</span><br><span class="line"></span><br><span class="line">    http.request(str.url + str.coming_soon,this.getComing)</span><br><span class="line">&#125;,</span><br><span class="line">getComing(res)&#123;</span><br><span class="line">	console.log(res.subjects)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-utils-多个请求工具函数的封装，并将结果存入一个对象变量中"><a href="#18-utils-多个请求工具函数的封装，并将结果存入一个对象变量中" class="headerlink" title="18.[utils]多个请求工具函数的封装，并将结果存入一个对象变量中"></a>18.[utils]多个请求工具函数的封装，并将结果存入一个对象变量中</h4><p>　　1）工具函数的封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getHttp(url,key,title,callback)&#123;</span><br><span class="line">  wx.request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    success: function (res) &#123;</span><br><span class="line">      callback(res.data,title, key);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  getHttp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　2）调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.getHttp(str.url + str.coming_soon, &#39;coming_soon&#39;, &#39;影院热映&#39;, this.getMovies);</span><br><span class="line">http.getHttp(str.url + str.in_theaters, &#39;in_theaters&#39;, &#39;热门电影&#39;, this.getMovies);</span><br><span class="line">http.getHttp(str.url + str.top250, &#39;top250&#39;, &#39;Top250&#39;, this.getMovies);</span><br></pre></td></tr></table></figure>
+
+<p>　　3）定义数据变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    movies:&#123;</span><br><span class="line">      coming_soon:&#39;&#39;,</span><br><span class="line">      in_theaters:&#39;&#39;,</span><br><span class="line">      top250:&#39;&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　4）回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getMovies(res, title, key)&#123;</span><br><span class="line">    &#x2F;&#x2F;console.log(res.subjects, title, key);</span><br><span class="line">    this.data.movies[key] &#x3D; &#123;</span><br><span class="line">      title:title,</span><br><span class="line">      list:res.subjects</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      movies: this.data.movies</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　5）前端渲染</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;wrapper&quot;&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;movies&quot; wx:for&#x3D;&quot;&#123;&#123; movies &#125;&#125;&quot; wx:key&#x3D;&quot;&#123;&#123; index &#125;&#125;&quot;&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;movies-title&quot;&gt;</span><br><span class="line">			&lt;view&gt;&#123;&#123; item.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">			&lt;view class&#x3D;&quot;more&quot;&gt;</span><br><span class="line">				更多&lt;text class&#x3D;&quot;iconfont iconxiangyoujiantou&quot;&gt;&lt;&#x2F;text&gt;</span><br><span class="line">			&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">		&lt;view class&#x3D;&quot;movies-list&quot;&gt;</span><br><span class="line">			&lt;scroll-view scroll-x&gt;</span><br><span class="line">			&lt;view class&#x3D;&quot;movies-item&quot; wx:for&#x3D;&quot;&#123;&#123; item.list &#125;&#125;&quot; wx:for-item&#x3D;&quot;list&quot; wx:for-index&#x3D;&quot;idx&quot; wx:key&#x3D;&quot;&#123;&#123; idx &#125;&#125;&quot;&gt;</span><br><span class="line">				&lt;image src&#x3D;&quot;&#123;&#123; list.images.large &#125;&#125;&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">				&lt;view class&#x3D;&quot;movie-name&quot;&gt;&#123;&#123; list.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">				&lt;view class&#x3D;&quot;rating&quot; wx:for&#x3D;&quot;&#123;&#123;[1,2,3,34,6]&#125;&#125;&quot;&gt;</span><br><span class="line">					&lt;image src&#x3D;&quot;..&#x2F;..&#x2F;images&#x2F;star1.png&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">				&lt;&#x2F;view&gt;</span><br><span class="line">        		&lt;text&gt;&#123;&#123; list.rating.average &#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">			&lt;&#x2F;view&gt;		</span><br><span class="line">			&lt;&#x2F;scroll-view&gt;</span><br><span class="line">		&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="19-模板-模板定义和使用"><a href="#19-模板-模板定义和使用" class="headerlink" title="19.[模板]模板定义和使用"></a>19.[模板]模板定义和使用</h4><p>　　第一步：</p>
+<p>　　创建模板文件</p>
+<p><img src="moban.png" alt=""></p>
+<p>　　第二步：书写模板内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;template name&#x3D;&quot;stars&quot;&gt;</span><br><span class="line">    &lt;!--&#123;&#123; list.rating.stars &#125;&#125;--&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;stars&quot;&gt;</span><br><span class="line">        &lt;view wx:if&#x3D;&quot;&#123;&#123; list.rating.stars &#x3D;&#x3D; &#39;00&#39; &#125;&#125;&quot;&gt;暂无评分&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;view wx:else&gt;</span><br><span class="line">            &lt;view class&#x3D;&quot;stars-list&quot; wx:for&#x3D;&quot;&#123;&#123;[1,2,3,4,5]&#125;&#125;&quot; wx:for-item&#x3D;&quot;i&quot; wx:key&#x3D;&quot;&#123;&#123; index &#125;&#125;&quot;&gt;</span><br><span class="line">                &lt;image wx:if&#x3D;&quot;&#123;&#123; list.rating.stars &#x2F; 10 &gt;&#x3D; index + 1 &#125;&#125;&quot; src&#x3D;&quot;&#x2F;images&#x2F;star1.png&quot;&#x2F;&gt;</span><br><span class="line">                &lt;image wx:elif&#x3D;&quot;&#123;&#123; list.rating.stars &#x2F; 10 &gt;&#x3D; index &amp;&amp; list.rating.stars % 10 !&#x3D; 0 &#125;&#125;&quot; src&#x3D;&quot;&#x2F;images&#x2F;star2.png&quot;&#x2F;&gt;</span><br><span class="line">                &lt;image wx:else src&#x3D;&quot;&#x2F;images&#x2F;star3.png&quot;&#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;view&gt;</span><br><span class="line">            &lt;text class&#x3D;&quot;rating-score&quot;&gt;&#123;&#123; list.rating.average &#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　提示：微信小程序中的模板可以有多个根目录。</p>
+<p>　　第三步：写模板样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.stars&#123;</span><br><span class="line">  font-size: 24rpx;</span><br><span class="line">  color:#ccc;</span><br><span class="line">&#125;</span><br><span class="line">.stars-list&#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">.stars-list&gt;image&#123;</span><br><span class="line">    width: 20rpx;</span><br><span class="line">    height: 20rpx;</span><br><span class="line">&#125;</span><br><span class="line">.rating-score&#123;</span><br><span class="line">  font-size: 24rpx;</span><br><span class="line">  color:#ccc;</span><br><span class="line">  margin-left: 20rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　第四步：引入模板文件和样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在home.wxml中添加 --&gt;</span><br><span class="line">&lt;import src&#x3D;&quot;&#x2F;template&#x2F;stars.wxml&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 在home.wxss中添加，引入时以home.wxss文件所在位置为参照，而不是以template文件夹所在位置为参照 *&#x2F;</span><br><span class="line">@import &#39;..&#x2F;..&#x2F;template&#x2F;stars.wxss&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>　　第五步：使用模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template is&#x3D;&quot;stars&quot; data&#x3D;&quot;&#123;&#123; list &#125;&#125;&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　提示：用自定义标签data来完成传值。</p>
+<h4 id="20-首页-首页跳转到详情页面并传值，然后发请求"><a href="#20-首页-首页跳转到详情页面并传值，然后发请求" class="headerlink" title="20.[首页]首页跳转到详情页面并传值，然后发请求"></a>20.[首页]首页跳转到详情页面并传值，然后发请求</h4><p>　　第一步：绑定事件并传值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;movies-list&quot;&gt;</span><br><span class="line">    &lt;scroll-view scroll-x&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;movies-item&quot; bindtap&#x3D;&quot;toDetails&quot; data-id&#x3D;&quot;&#123;&#123; list.id &#125;&#125;&quot; wx:for&#x3D;&quot;&#123;&#123; item.list &#125;&#125;&quot; wx:for-item&#x3D;&quot;list&quot; wx:for-index&#x3D;&quot;idx&quot; wx:key&#x3D;&quot;&#123;&#123; idx &#125;&#125;&quot;&gt;</span><br><span class="line">            &lt;image src&#x3D;&quot;&#123;&#123; list.images.large &#125;&#125;&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">            &lt;view class&#x3D;&quot;movie-name&quot;&gt;&#123;&#123; list.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">            &lt;view class&#x3D;&quot;rating&quot;&gt;</span><br><span class="line">            	&lt;template is&#x3D;&quot;stars&quot; data&#x3D;&quot;&#123;&#123; list &#125;&#125;&quot;&#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;scroll-view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　第二步：定义事件方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">toDetails(e)&#123;</span><br><span class="line">    let id &#x3D; e.currentTarget.dataset.id;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url:&quot;&#x2F;pages&#x2F;details&#x2F;details?id&#x3D;&quot; + id</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　第三步：在详情页面发请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let app &#x3D; getApp();</span><br><span class="line">let http &#x3D; require(&#39;..&#x2F;..&#x2F;utils&#x2F;http&#39;);</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    moviesDetails:&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad:function (options) &#123;</span><br><span class="line">    let id &#x3D; options.id;&#x2F;&#x2F;接收路由传过来的值</span><br><span class="line">    let str &#x3D; app.globalData.movies;&#x2F;&#x2F;取全局变量的值</span><br><span class="line">    http.request(str.url + str.subject + &#39;&#x2F;&#39; + id,this.getDetails);&#x2F;&#x2F; 利用封装的工具函数发请求</span><br><span class="line">  &#125;,</span><br><span class="line">  getDetails(res)&#123;&#x2F;&#x2F; 请求回调处理</span><br><span class="line">    &#x2F;&#x2F;console.log(res);</span><br><span class="line">    this.setData(&#123;&#x2F;&#x2F;将请求的结果存入data设定的变量中，用于前端数据渲染</span><br><span class="line">      moviesDetails:res</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(this.data.moviesDetails);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="21-详情页面-动态改变标题"><a href="#21-详情页面-动态改变标题" class="headerlink" title="21.[详情页面]动态改变标题"></a>21.[详情页面]动态改变标题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getDetails(res)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      moviesDetails:res</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 动态改变标题</span><br><span class="line">    wx.setNavigationBarTitle(&#123;</span><br><span class="line">      title: this.data.moviesDetails.title</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="22-详情页面-添加Loading"><a href="#22-详情页面-添加Loading" class="headerlink" title="22.[详情页面]添加Loading"></a>22.[详情页面]添加Loading</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">getDetails(res)&#123;</span><br><span class="line">	&#x2F;&#x2F; 显示Loading</span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: &#39;加载中...&#39;,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      moviesDetails:res</span><br><span class="line">    &#125;);</span><br><span class="line">    wx.setNavigationBarTitle(&#123;</span><br><span class="line">      title: this.data.moviesDetails.title</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">	&#x2F;&#x2F; Loading隐藏</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      wx.hideLoading()</span><br><span class="line">    &#125;, 1500)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="23-添加进度条"><a href="#23-添加进度条" class="headerlink" title="23.添加进度条"></a>23.添加进度条</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;progress percent&#x3D;&#123;&#123; 变量名或表达式 &#125;&#125; color&#x3D;&quot;进度条配色&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="24-首页-gt-more页面-单击“更多“跳转到more页面，并发请求"><a href="#24-首页-gt-more页面-单击“更多“跳转到more页面，并发请求" class="headerlink" title="24.[首页-&gt;more页面]单击“更多“跳转到more页面，并发请求"></a>24.[首页-&gt;more页面]单击“更多“跳转到more页面，并发请求</h4><p>　　home.wxml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;more&quot; bindtap&#x3D;&quot;toMore&quot; data-title&#x3D;&quot;&#123;&#123; item.title &#125;&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="toMore.png" alt=""></p>
+<p>　　home.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">toMore(e)&#123;</span><br><span class="line">    let title &#x3D; e.currentTarget.dataset.title;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url:&quot;&#x2F;pages&#x2F;more&#x2F;more?title&#x3D;&quot; + title  &#x2F;&#x2F; 跳转并传值</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　新建more目录，并在more.js写如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">let app &#x3D; getApp();</span><br><span class="line">let http &#x3D; require(&#39;..&#x2F;..&#x2F;utils&#x2F;http&#39;);</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    allMore:[],</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad:function (options) &#123;</span><br><span class="line">    let title &#x3D; options.title;</span><br><span class="line">    let api &#x3D; app.globalData.movies;</span><br><span class="line">    let httpStr &#x3D; &#39;&#39;;</span><br><span class="line">    switch (title)&#123;</span><br><span class="line">      case &#39;影院热映&#39; : httpStr &#x3D; api.url + api.coming_soon;break;</span><br><span class="line">      case &#39;热门电影&#39; : httpStr &#x3D; api.url + api.in_theaters;break;</span><br><span class="line">      case &#39;Top250&#39; : httpStr &#x3D; api.url + api.top250;</span><br><span class="line">    &#125;</span><br><span class="line">    http.request(httpStr,this.getMore)</span><br><span class="line">  &#125;,</span><br><span class="line">  getMore(data)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      allMore:data.subjects</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(this.data.allMore)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="25-more页面-单击”more”页面的电影，跳转到详情页面"><a href="#25-more页面-单击”more”页面的电影，跳转到详情页面" class="headerlink" title="25.[more页面]单击”more”页面的电影，跳转到详情页面"></a>25.[more页面]单击”more”页面的电影，跳转到详情页面</h4><p>　　more.wxml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;view</span><br><span class="line">    class&#x3D;&#39;more-item&#39;</span><br><span class="line">    wx:for&#x3D;&#39;&#123;&#123;allMore&#125;&#125;&#39;</span><br><span class="line">    wx:for-item&#x3D;&quot;list&quot;</span><br><span class="line">    wx:key&#x3D;&quot;&#123;&#123;index&#125;&#125;&quot;</span><br><span class="line">    bindtap&#x3D;&quot;toDetail&quot;</span><br><span class="line">    data-id&#x3D;&quot;&#123;&#123; list.id &#125;&#125;&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="more.png" alt=""></p>
+<p>　　more.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">toDetail(e)&#123;</span><br><span class="line">    let id &#x3D; e.currentTarget.dataset.id;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url:&quot;&#x2F;pages&#x2F;details&#x2F;details?id&#x3D;&quot; +id</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="26-more页面-动态改变标题"><a href="#26-more页面-动态改变标题" class="headerlink" title="26.[more页面]动态改变标题"></a>26.[more页面]动态改变标题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.setNavigationBarTitle(&#123;</span><br><span class="line">	title: this.data.title</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="morejs.png" alt=""></p>
+<h4 id="27-more页面-上拉加载更多"><a href="#27-more页面-上拉加载更多" class="headerlink" title="27.[more页面]上拉加载更多"></a>27.[more页面]上拉加载更多</h4><p>　　more.wxml</p>
+<p><img src="loadmorewxml.png" alt=""></p>
+<p>　　more.wxss</p>
+<p><img src="loadmorewxss.png" alt=""></p>
+<p>　　more.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">let app &#x3D; getApp();</span><br><span class="line">let http &#x3D; require(&#39;..&#x2F;..&#x2F;utils&#x2F;http&#39;);</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    allMore:[],</span><br><span class="line">    title:&#39;&#39;,</span><br><span class="line">    httpStr:&#39;&#39;,</span><br><span class="line">    start:0,</span><br><span class="line">    reqCount:20</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad:function (options) &#123;</span><br><span class="line">    let title &#x3D; options.title;</span><br><span class="line">    let api &#x3D; app.globalData.movies;</span><br><span class="line">    let httpStr &#x3D; &#39;&#39;;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      title:title</span><br><span class="line">    &#125;);</span><br><span class="line">    switch (title)&#123;</span><br><span class="line">      case &#39;影院热映&#39; : httpStr &#x3D; api.url + api.coming_soon;break;</span><br><span class="line">      case &#39;热门电影&#39; : httpStr &#x3D; api.url + api.in_theaters;break;</span><br><span class="line">      case &#39;Top250&#39; : httpStr &#x3D; api.url + api.top250;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      httpStr:httpStr</span><br><span class="line">    &#125;);</span><br><span class="line">    &#x2F;&#x2F; 显示loading</span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: &#39;加载中...&#39;,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    http.request(httpStr,this.getMore);</span><br><span class="line">    &#x2F;&#x2F; 动态改变标题</span><br><span class="line">    wx.setNavigationBarTitle(&#123;</span><br><span class="line">      title: this.data.title</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      wx.hideLoading()</span><br><span class="line">    &#125;, 1000)</span><br><span class="line">  &#125;,</span><br><span class="line">  getMore(data)&#123;</span><br><span class="line">    let tmpMore &#x3D; [];</span><br><span class="line">    if(this.data.start &gt; 0)&#123;</span><br><span class="line">      tmpMore &#x3D; this.data.allMore.concat(data.subjects);&#x2F;&#x2F;concat合并数组</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      tmpMore &#x3D; data.subjects</span><br><span class="line">    &#125;</span><br><span class="line">    this.data.start +&#x3D; this.data.reqCount;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      allMore:tmpMore</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  loadMore()&#123;</span><br><span class="line">    let url &#x3D; this.data.httpStr + &#39;?start&#x3D;&#39; + this.data.start + &#39;&amp;count&#x3D;&#39; + this.data.reqCount;</span><br><span class="line"></span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: &#39;请稍等...&#39;,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    http.request(url,this.getMore);</span><br><span class="line"></span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      wx.hideLoading()</span><br><span class="line">    &#125;, 1000)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F; 跳转到详情页面</span><br><span class="line">  toDetail(e)&#123;</span><br><span class="line">    let id &#x3D; e.currentTarget.dataset.id;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url:&quot;&#x2F;pages&#x2F;details&#x2F;details?id&#x3D;&quot; +id</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="28-搜索页面-搜索"><a href="#28-搜索页面-搜索" class="headerlink" title="28.[搜索页面]搜索"></a>28.[搜索页面]搜索</h4><p>　　头部布局（搜索结果布局自己添加）</p>
+<p>　　search.wxml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;search&quot;&gt;</span><br><span class="line">        &lt;icon type&#x3D;&quot;search&quot; size&#x3D;&#39;10&#39;&gt;&lt;&#x2F;icon&gt;</span><br><span class="line">        &lt;input placeholder&#x3D;&quot;搜索&quot; bindinput&#x3D;&quot;search&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;movies-list&quot;&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　search.wxss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.header&#123;</span><br><span class="line">  background:#42bd56;</span><br><span class="line">  padding:20rpx 30rpx;</span><br><span class="line">&#125;</span><br><span class="line">.search&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  font-size:28rpx;</span><br><span class="line">  padding:10rpx 0;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.search icon&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top:28rpx;</span><br><span class="line">  left:15rpx;</span><br><span class="line">&#125;</span><br><span class="line">.search input&#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  border-radius:10rpx;</span><br><span class="line">  background-color: #fff;</span><br><span class="line">  padding-left: 40rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　search.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let app &#x3D; getApp();</span><br><span class="line">let http &#x3D; require(&#39;..&#x2F;..&#x2F;utils&#x2F;http&#39;);</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    searchRs:[]</span><br><span class="line">  &#125;,</span><br><span class="line">  search(e)&#123;</span><br><span class="line">    &#x2F;&#x2F;console.log(e);</span><br><span class="line">    let val &#x3D; e.detail.value;</span><br><span class="line">    let api &#x3D; app.globalData.movies;</span><br><span class="line">    http.request(api.url + api.search + &#39;?q&#x3D;&#39; + val,this.getSearch)</span><br><span class="line">  &#125;,</span><br><span class="line">  getSearch(res)&#123;</span><br><span class="line">    console.log(res.subjects);</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      searchRs:res.subjects</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="29-搜索页面-静态添加搜索标题"><a href="#29-搜索页面-静态添加搜索标题" class="headerlink" title="29.[搜索页面]静态添加搜索标题"></a>29.[搜索页面]静态添加搜索标题</h4><p>　　search.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;navigationBarTitleText&quot;: &quot;搜索&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>29.真机测试</p>
+<p>　　1）代码上传。</p>
+<p><img src="upload.png" alt=""></p>
+<p>　　2）进入小程序后台可以选择添加体验或开发成员。</p>
+<p><img src="adddev01.png" alt=""></p>
+<p><img src="adddev02.png" alt=""></p>
+<p>　　3）真机体验。</p>
+<p><img src="test.png" alt=""></p>
+<p>　　注：真机体验时可能看不到请求到的数据，要把可调试打开，并可以添加到桌面。</p>
+<h4 id="30-跳转"><a href="#30-跳转" class="headerlink" title="30.跳转"></a>30.跳转</h4><p>1）静态跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url&#x3D;&quot;&quot;&gt;提示内容&lt;&#x2F;navigator&gt;   &lt;!-- 相当于a标签 --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2）动态跳转</p>
+<p>a.跳转到指定页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">toPlay()&#123;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">    url: &#39;&#x2F;pages&#x2F;play&#x2F;play&#39;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>b.跳转到选项卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">toHome()&#123;</span><br><span class="line">    wx.switchTab(&#123;</span><br><span class="line">      url: &#39;&#x2F;pages&#x2F;home&#x2F;home&#39;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="31-体验后的问题"><a href="#31-体验后的问题" class="headerlink" title="31.体验后的问题"></a>31.体验后的问题</h4><p>　　体验后发现安卓手机的标题不居中，而苹果手机可以居中，解决方案：</p>
+<p>　　在app.json的”window”中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;navigationStyle&quot;:&quot;custom&quot;</span><br></pre></td></tr></table></figure>
+
+<p>　　<img src="custom.png" alt=""></p>
+<p>　　同时在需要添加标题的页面自行布局标题，且不能使用类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.setNavigationBarTitle(&#123;</span><br><span class="line">	title: this.data.moviesDetails.title</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>　　不能用上面的代码去实现动态改变标题，而要用数据单向绑定去设置标题。</p>
+<h4 id="32-在阿里云上布https协议的后台接口"><a href="#32-在阿里云上布https协议的后台接口" class="headerlink" title="32.在阿里云上布https协议的后台接口"></a>32.在阿里云上布https协议的后台接口</h4><p>1）在aliyun后台购买ssl证书</p>
+<p>2）将ssl证书绑定到域名上</p>
+<p>3）下载证书（如果是node，下载支持Nginx的证书）</p>
+<p>4）将证书复制到阿里云后台，并将扩展名为.pem的改为.crt。</p>
+<p>5）在后台创建如下文件夹和文件：</p>
+<p><img src="yg01.png" alt=""></p>
+<p>6）data.js文件的内容参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var https &#x3D; require(&#39;https&#39;);</span><br><span class="line">var fs &#x3D; require(&#39;fs&#39;);</span><br><span class="line">const options &#x3D; &#123;</span><br><span class="line">    key: fs.readFileSync(&#39;.&#x2F;module&#x2F;3043388_www.hspstudio.club.key&#39;),</span><br><span class="line">    cert: fs.readFileSync(&#39;.&#x2F;module&#x2F;3043388_www.hspstudio.club.crt&#39;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建一个服务器对象</span><br><span class="line">var server &#x3D; https.createServer(options);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过事件监听request事件</span><br><span class="line"></span><br><span class="line">server.on(&#39;request&#39;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">    fs.readFile(&#39;.&#x2F;data&#x2F;top250.json&#39;,(err,data)&#x3D;&gt;&#123;</span><br><span class="line">        if(err)&#123;</span><br><span class="line">            throw err</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res.writeHead(300,&#123;</span><br><span class="line">                &quot;Content-Type&quot;:&quot;text&#x2F;plain;charset&#x3D;utf-8&quot;,</span><br><span class="line">                &quot;Access-Control-Allow-Origin&quot;:&quot;*&quot;</span><br><span class="line">            &#125;)</span><br><span class="line">            res.write(data);</span><br><span class="line">            res.end();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 监听端口设置</span><br><span class="line">server.listen(443,&#39;0.0.0.0&#39;,()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;服务器已启动！&#39;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>7）前端接口测试</p>
+<p><img src="yg02.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" data-id="ck6zauz3p0002w0ibbeo09w1r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89%EF%BC%88%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          锦曼商城（mpvue+WeUI+MySQL+Node.js）（小程序）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">点餐APP开发（Vue2.6+ES6+Stylus+Node.js）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/24/%E7%A7%A6%E6%80%9D%E6%97%85%E6%B8%B8(Vue+Node.js+Stylus)%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">秦思旅游(Vue+Node.js+Stylus)项目开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/Yogo%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">Yogo项目开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89%EF%BC%88%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%89/">锦曼商城（mpvue+WeUI+MySQL+Node.js）（小程序）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">[微信小程序原生开发]在线电影评分项目笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/">点餐APP开发（Vue2.6+ES6+Stylus+Node.js）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 侯仕平<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

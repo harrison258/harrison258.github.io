@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>点餐APP开发（Vue2.6+ES6+Stylus+Node.js） | 临渊羡鱼的个人技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="点餐APP开发（Vue2.6+ES6+Stylus+Vuex+Axios+Node.js）1、项目功能分析2、完成后的项目界面3、项目准备3.1 UI图4、项目实施4.1 代码仓库地址1https:&#x2F;&#x2F;gitee.com&#x2F;houyi_studio_admin&#x2F;qinsi_dinner_app  4.2 搭建项目环境注意：要选择代码校验。 4.3 安装插件1f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="点餐APP开发（Vue2.6+ES6+Stylus+Node.js）">
+<meta property="og:url" content="https://harrison258.github.io/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/index.html">
+<meta property="og:site_name" content="临渊羡鱼的个人技术博客">
+<meta property="og:description" content="点餐APP开发（Vue2.6+ES6+Stylus+Vuex+Axios+Node.js）1、项目功能分析2、完成后的项目界面3、项目准备3.1 UI图4、项目实施4.1 代码仓库地址1https:&#x2F;&#x2F;gitee.com&#x2F;houyi_studio_admin&#x2F;qinsi_dinner_app  4.2 搭建项目环境注意：要选择代码校验。 4.3 安装插件1f">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-23T16:58:07.479Z">
+<meta property="article:modified_time" content="2019-09-02T09:17:21.434Z">
+<meta property="article:author" content="侯仕平">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="临渊羡鱼的个人技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">临渊羡鱼的个人技术博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">仅供交流和学习用，勿商用！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://harrison258.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-点餐APP开发（Vue2.6+ES6+Stylus+Node.js）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/" class="article-date">
+  <time datetime="2020-02-23T16:58:07.479Z" itemprop="datePublished">2020-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      点餐APP开发（Vue2.6+ES6+Stylus+Node.js）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="点餐APP开发（Vue2-6-ES6-Stylus-Vuex-Axios-Node-js）"><a href="#点餐APP开发（Vue2-6-ES6-Stylus-Vuex-Axios-Node-js）" class="headerlink" title="点餐APP开发（Vue2.6+ES6+Stylus+Vuex+Axios+Node.js）"></a>点餐APP开发（Vue2.6+ES6+Stylus+Vuex+Axios+Node.js）</h2><h3 id="1、项目功能分析"><a href="#1、项目功能分析" class="headerlink" title="1、项目功能分析"></a>1、项目功能分析</h3><h3 id="2、完成后的项目界面"><a href="#2、完成后的项目界面" class="headerlink" title="2、完成后的项目界面"></a>2、完成后的项目界面</h3><h3 id="3、项目准备"><a href="#3、项目准备" class="headerlink" title="3、项目准备"></a>3、项目准备</h3><h4 id="3-1-UI图"><a href="#3-1-UI图" class="headerlink" title="3.1 UI图"></a>3.1 UI图</h4><h3 id="4、项目实施"><a href="#4、项目实施" class="headerlink" title="4、项目实施"></a>4、项目实施</h3><h4 id="4-1-代码仓库地址"><a href="#4-1-代码仓库地址" class="headerlink" title="4.1 代码仓库地址"></a>4.1 代码仓库地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;houyi_studio_admin&#x2F;qinsi_dinner_app</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-搭建项目环境"><a href="#4-2-搭建项目环境" class="headerlink" title="4.2 搭建项目环境"></a>4.2 搭建项目环境</h4><p>注意：要选择代码校验。</p>
+<h4 id="4-3-安装插件"><a href="#4-3-安装插件" class="headerlink" title="4.3 安装插件"></a>4.3 安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastclick、stylus、better-scroll、axios</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i fastclick stylus stylus-loader axios -S</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-全局引入"><a href="#4-4-全局引入" class="headerlink" title="4.4 全局引入"></a>4.4 全局引入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from &#39;fastclick&#39;</span><br><span class="line">import axios from &#39;axios&#39;</span><br><span class="line">FastClick.attach(document.body)</span><br><span class="line">Vue.prototype.$http &#x3D; axios</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-devicepixelratio"><a href="#4-5-devicepixelratio" class="headerlink" title="4.5 devicepixelratio"></a>4.5 devicepixelratio</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;gxp69&#x2F;articles&#x2F;7079656.html</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.devicePixelRatio是设备上物理像素和设备独立像素(device-independent pixels (dips))的比例。</span><br><span class="line">公式：window.devicePixelRatio &#x3D; 物理像素 &#x2F; dips</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-将svg转换为字体图标"><a href="#4-6-将svg转换为字体图标" class="headerlink" title="4.6 将svg转换为字体图标"></a>4.6 将svg转换为字体图标</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;icomoon.io&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IconMoon App-&gt;Import Icons-&gt;导入svg文件-&gt;全选-&gt;download</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-7-引入icon和reset-css"><a href="#4-7-引入icon和reset-css" class="headerlink" title="4.7 引入icon和reset.css"></a>4.7 引入icon和reset.css</h4><h4 id="4-8-激活路由"><a href="#4-8-激活路由" class="headerlink" title="4.8 激活路由"></a>4.8 激活路由</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export default new Router(&#123;</span><br><span class="line">  linkActiveClass: &#39;active&#39;,</span><br><span class="line">  routes: [</span><br><span class="line">  。。。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">    color:rgb(77,85,93)</span><br><span class="line">    &amp;.active</span><br><span class="line">    	color:red</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-9-搭建后台接口"><a href="#4-9-搭建后台接口" class="headerlink" title="4.9  搭建后台接口"></a>4.9  搭建后台接口</h4><blockquote>
+<p>也可直接访问我提供的后台接口<a href="http://47.105.51.229/order" target="_blank" rel="noopener">http://47.105.51.229/order</a>，不用做下面的操作。</p>
+</blockquote>
+<h4 id="4-9-1-修改package-json"><a href="#4-9-1-修改package-json" class="headerlink" title="4.9.1 修改package.json"></a>4.9.1 修改package.json</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;webpack-dev-server --inline --host 0.0.0.0 --progress --config build&#x2F;webpack.dev.conf.js&quot;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-9-2-修改端口（修改config-gt-index-js）"><a href="#4-9-2-修改端口（修改config-gt-index-js）" class="headerlink" title="4.9.2 修改端口（修改config-&gt;index.js）"></a>4.9.2 修改端口（修改config-&gt;index.js）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">host: &#39;localhost&#39;, </span><br><span class="line">port: 80,</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-9-3-接口实现（修改build-gt-webpack-dev-conf-js）"><a href="#4-9-3-接口实现（修改build-gt-webpack-dev-conf-js）" class="headerlink" title="4.9.3 接口实现（修改build-&gt;webpack.dev.conf.js）"></a>4.9.3 接口实现（修改build-&gt;webpack.dev.conf.js）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;)</span><br><span class="line">const app &#x3D; express()</span><br><span class="line">const appData &#x3D; require(&#39;..&#x2F;static&#x2F;mock&#x2F;data&#x2F;data.json&#39;)</span><br><span class="line">const seller &#x3D; appData.seller</span><br><span class="line">const goods &#x3D; appData.goods</span><br><span class="line">const ratings &#x3D; appData.ratings</span><br><span class="line">const apiRoutes &#x3D; express.Router()</span><br><span class="line">app.use(&#39;&#x2F;api&#39;,apiRoutes)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">    before(app) &#123;</span><br><span class="line">      app.get(&#39;&#x2F;api&#x2F;seller&#39;,(req,res) &#x3D;&gt; &#123;</span><br><span class="line">        res.send(&#123;</span><br><span class="line">          errCode: 0,</span><br><span class="line">          data: seller</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      app.get(&#39;&#x2F;api&#x2F;goods&#39;,(req,res) &#x3D;&gt; &#123;</span><br><span class="line">        res.send(&#123;</span><br><span class="line">          errCode: 0,</span><br><span class="line">          data: goods</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      app.get(&#39;&#x2F;api&#x2F;ratings&#39;,(req,res) &#x3D;&gt; &#123;</span><br><span class="line">        res.send(&#123;</span><br><span class="line">          errCode: 0,</span><br><span class="line">          data: ratings</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-9-4-调用后台接口（修改App-vue）"><a href="#4-9-4-调用后台接口（修改App-vue）" class="headerlink" title="4.9.4 调用后台接口（修改App.vue）"></a>4.9.4 调用后台接口（修改App.vue）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mounted () &#123;</span><br><span class="line">    this.$http(&#123;</span><br><span class="line">    	url: &#39;&#x2F;api&#x2F;seller&#39; &#x2F;&#x2F;或者写成：url:&#39;http:&#x2F;&#x2F;47.105.51.229&#x2F;order&#39;</span><br><span class="line">    &#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">        console.log(res)        </span><br><span class="line">    &#125;).catch(err &#x3D;&gt; &#123;</span><br><span class="line">    	console.log(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://harrison258.github.io/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/" data-id="ck6zauz3u0003w0ibgzayaqjn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [微信小程序原生开发]在线电影评分项目笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/24/Hexo%E5%89%8D%E7%AB%AF%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo前端博客框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/24/%E7%A7%A6%E6%80%9D%E6%97%85%E6%B8%B8(Vue+Node.js+Stylus)%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">秦思旅游(Vue+Node.js+Stylus)项目开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/Yogo%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">Yogo项目开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89%EF%BC%88%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%89/">锦曼商城（mpvue+WeUI+MySQL+Node.js）（小程序）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">[微信小程序原生开发]在线电影评分项目笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/">点餐APP开发（Vue2.6+ES6+Stylus+Node.js）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 侯仕平<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

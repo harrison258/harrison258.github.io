@@ -5,34 +5,35 @@
   
 
   
-  <title>[微信小程序原生开发]在线电影评分项目笔记 | 临渊羡鱼的个人技术博客</title>
+  <title>[小程序原生开发]在线影评 | 临渊羡鱼的个人技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[微信小程序原生开发]云谷电影项目笔记0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线">
+  <meta name="description" content="0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线上项目  1.微信小程序1.1 小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[微信小程序原生开发]在线电影评分项目笔记">
-<meta property="og:url" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="[小程序原生开发]在线影评">
+<meta property="og:url" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/index.html">
 <meta property="og:site_name" content="临渊羡鱼的个人技术博客">
-<meta property="og:description" content="[微信小程序原生开发]云谷电影项目笔记0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/directory.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/moban.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/toMore.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/more.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/morejs.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/loadmorewxml.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/loadmorewxss.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/upload.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/adddev01.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/adddev02.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/test.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/custom.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/yg01.png">
-<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/yg02.png">
+<meta property="og:description" content="0.前言工作必备技能： 121）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）2）微信小程序  面试必须掌握的核心内容： 12345678HTML5新特性和CSS3新特性浏览器兼容处理ES5.1&#x2F;ES6AMD CMD CommonJSNode.js&#x2F;PHP&#x2F;Java (必须具备一门后台语言)Vue.js微信小程序线上项目  1.微信小程序1.1 小程序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/directory.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/moban.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/toMore.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/more.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/morejs.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/loadmorewxml.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/loadmorewxss.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/upload.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/adddev01.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/adddev02.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/test.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/custom.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/yg01.png">
+<meta property="og:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/yg02.png">
 <meta property="article:published_time" content="2020-02-23T16:58:37.320Z">
-<meta property="article:modified_time" content="2020-02-23T17:09:54.758Z">
-<meta property="article:author" content="侯仕平">
+<meta property="article:modified_time" content="2020-02-23T19:11:38.465Z">
+<meta property="article:author" content="版权归侯仕平所有，并提供技术支持！未经授权，不得商用！">
+<meta property="article:tag" content="技术博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/directory.png">
+<meta name="twitter:image" content="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/directory.png">
   
     <link rel="alternate" href="/atom.xml" title="临渊羡鱼的个人技术博客" type="application/atom+xml">
   
@@ -67,16 +68,16 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/">首页</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">全部条目</a>
         
       </nav>
       <nav id="sub-nav">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://harrison258.github.io"></form>
@@ -85,9 +86,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-[微信小程序原生开发]在线电影评分项目笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-[小程序原生开发]在线影评" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2020/02/24/%5B%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/" class="article-date">
   <time datetime="2020-02-23T16:58:37.320Z" itemprop="datePublished">2020-02-24</time>
 </a>
     
@@ -99,7 +100,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      [微信小程序原生开发]在线电影评分项目笔记
+      [小程序原生开发]在线影评
     </h1>
   
 
@@ -107,7 +108,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="微信小程序原生开发-云谷电影项目笔记"><a href="#微信小程序原生开发-云谷电影项目笔记" class="headerlink" title="[微信小程序原生开发]云谷电影项目笔记"></a><center>[微信小程序原生开发]云谷电影项目笔记</center></h2><h4 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h4><p>工作必备技能：</p>
+        <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h4 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h4><p>工作必备技能：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）用vue.js开发PC端和移动端项目（组件化、模块化、自动化）</span><br><span class="line">2）微信小程序</span><br></pre></td></tr></table></figure>
 
 <p>面试必须掌握的核心内容：</p>
@@ -312,7 +313,7 @@ Top250电影：/v2/movie/top250
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://harrison258.github.io/2020/02/24/[%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" data-id="ck6zauz3p0002w0ibbeo09w1r" class="article-share-link">Share</a>
+      <a data-url="https://harrison258.github.io/2020/02/24/[%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91]%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/" data-id="ck6zewsmg0001s8ib77k922se" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,19 +322,19 @@ Top250电影：/v2/movie/top250
     
 <nav id="article-nav">
   
-    <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89%EF%BC%88%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          锦曼商城（mpvue+WeUI+MySQL+Node.js）（小程序）
+          锦曼商城（mpvue+WeUI+MySQL+Node.js）
         
       </div>
     </a>
   
   
-    <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue+ES6+Vuex+Axios%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">点餐APP开发（Vue2.6+ES6+Stylus+Node.js）</div>
+      <div class="article-nav-title">点餐APP开发（Vue+ES6+Vuex+Axios）</div>
     </a>
   
 </nav>
@@ -355,9 +356,9 @@ Top250电影：/v2/movie/top250
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
     </div>
   </div>
 
@@ -365,28 +366,28 @@ Top250电影：/v2/movie/top250
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2020/02/24/%E7%A7%A6%E6%80%9D%E6%97%85%E6%B8%B8(Vue+Node.js+Stylus)%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">秦思旅游(Vue+Node.js+Stylus)项目开发</a>
+            <a href="/2020/02/24/%E4%BA%91%E8%B0%B7%E6%97%85%E6%B8%B8(Vue+Node.js+Stylus)%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">云谷旅游(Vue+Node.js+Stylus)项目开发</a>
           </li>
         
           <li>
-            <a href="/2020/02/24/Yogo%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">Yogo项目开发</a>
+            <a href="/2020/02/24/Yogo%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%EF%BC%88PC%E7%AB%AF%E7%94%B5%E5%95%86%E7%BD%91%E7%AB%99%EF%BC%89/">Yogo项目开发（PC端电商网站）</a>
           </li>
         
           <li>
-            <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89%EF%BC%88%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%89/">锦曼商城（mpvue+WeUI+MySQL+Node.js）（小程序）</a>
+            <a href="/2020/02/24/%E9%94%A6%E6%9B%BC%E5%95%86%E5%9F%8E%EF%BC%88mpvue+WeUI+MySQL+Node.js%EF%BC%89/">锦曼商城（mpvue+WeUI+MySQL+Node.js）</a>
           </li>
         
           <li>
-            <a href="/2020/02/24/%5B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">[微信小程序原生开发]在线电影评分项目笔记</a>
+            <a href="/2020/02/24/%5B%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%5D%E5%9C%A8%E7%BA%BF%E5%BD%B1%E8%AF%84/">[小程序原生开发]在线影评</a>
           </li>
         
           <li>
-            <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue2.6+ES6+Stylus+Node.js%EF%BC%89/">点餐APP开发（Vue2.6+ES6+Stylus+Node.js）</a>
+            <a href="/2020/02/24/%E7%82%B9%E9%A4%90APP%E5%BC%80%E5%8F%91%EF%BC%88Vue+ES6+Vuex+Axios%EF%BC%89/">点餐APP开发（Vue+ES6+Vuex+Axios）</a>
           </li>
         
       </ul>
@@ -401,17 +402,18 @@ Top250电影：/v2/movie/top250
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 侯仕平<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2018 - 2020 版权归侯仕平所有，并提供技术支持！未经授权，不得商用！<br>
+      微信公众号： <a href="###" target="_blank">web前端开发</a>
+      个人网站： <a href="http://www.hspstudio.club" target="_blank">http(s)://www.hspstudio.club</a>（说明：如果网站打不开，可能在做其它测试）
     </div>
   </div>
 </footer>
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">首页</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">全部条目</a>
   
 </nav>
     
